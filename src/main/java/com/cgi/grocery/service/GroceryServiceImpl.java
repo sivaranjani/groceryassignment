@@ -16,6 +16,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.cgi.grocery.common.ApplicationQueryConstant;
+import com.cgi.grocery.dao.ItemDaoImpl;
 import com.cgi.grocery.entity.Item;
 import com.cgi.grocery.entity.ItemDetails;
 import com.cgi.grocery.repository.ItemRepository;
@@ -28,24 +29,19 @@ import com.cgi.grocery.vo.ItemVo;
 @Service
 public class GroceryServiceImpl implements GroceryService{
 
-	@PersistenceContext
-	private EntityManager entityManager;
-
 	@Autowired
-	ItemRepository itemRepository;
+	ItemDaoImpl daoImpl; 
 
 	@Override
 	public List<ItemVo> getItemListWithMaxPrice() {
-
-		TypedQuery<ItemVo> query = entityManager.createQuery(ApplicationQueryConstant.ITEM_QUERY, ItemVo.class);
-		List<ItemVo> list =  query.getResultList();
+		List<ItemVo> list =  daoImpl.getItemListWithMaxPrice();
 		return list;
 	}
 
 	@Override
 	public List<ItemVo> getItemDetails(Long itemId) {
 		List<ItemVo> itemList = new ArrayList<ItemVo>();
-		Optional<Item> item = itemRepository.findById(itemId);
+		Optional<Item> item = daoImpl.getItemDetails(itemId);
 		SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
 		if(null != item && null != item.get())
 		{
