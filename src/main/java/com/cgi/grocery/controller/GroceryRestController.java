@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.cgi.grocery.service.GroceryFileService;
 import com.cgi.grocery.service.GroceryService;
 import com.cgi.grocery.vo.ItemVo;
 
@@ -29,10 +28,7 @@ public class GroceryRestController {
 	
 	@Autowired
 	private GroceryService groceryService;
-	
-	@Autowired
-	private GroceryFileService groceryFileService;
-	
+		
 	@GetMapping("/getItemList")
 	public ResponseEntity<List<ItemVo>> getItemListWithMaxPrice()
 	{
@@ -47,12 +43,4 @@ public class GroceryRestController {
 		return new ResponseEntity<>(itemList, HttpStatus.OK);
 	}
 	
-	@GetMapping("/uploadGroceryData")
-	public void uploadGroceryData()
-	{
-		System.out.println("uploadGroceryData started:::");
-		groceryFileService.readExcelData();
-		System.out.println("uploadGroceryData done:::");
-	}
-
 }

@@ -24,7 +24,6 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 
-import com.cgi.grocery.service.GroceryFileService;
 import com.cgi.grocery.service.GroceryService;
 import com.cgi.grocery.vo.ItemVo;
 
@@ -42,9 +41,6 @@ public class GroceryRestControllerTest {
 	
 	@MockBean
 	GroceryService groceryService;
-	
-	@MockBean
-	GroceryFileService groceryFileService;
 
 	@Test
 	void test_getItemListWithMaxPrice() throws Exception

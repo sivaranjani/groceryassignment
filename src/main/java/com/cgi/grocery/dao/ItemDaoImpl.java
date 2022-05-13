@@ -3,8 +3,6 @@
  */
 package com.cgi.grocery.dao;
 
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -17,7 +15,6 @@ import org.springframework.stereotype.Service;
 
 import com.cgi.grocery.common.ApplicationQueryConstant;
 import com.cgi.grocery.entity.Item;
-import com.cgi.grocery.entity.ItemDetails;
 import com.cgi.grocery.repository.ItemRepository;
 import com.cgi.grocery.vo.ItemVo;
 
